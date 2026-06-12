@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shanaim Shourov — Portfolio
 
-## Getting Started
+Neo-brutalist single-page portfolio. Fully static Next.js export — no server, no runtime data fetching, ~1.3 MB total output.
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router, `output: "export"` — pure static HTML/CSS/JS)
+- **Tailwind CSS v4** (design tokens in `globals.css` via `@theme`)
+- **TypeScript**
+- Fonts self-hosted at build time via `next/font` (Archivo Black / Space Grotesk / Space Mono)
+
+## Commands
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # dev server
+npm run build   # static export → ./out
+npx serve out   # preview the production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Deploy by uploading `out/` to any static host (GitHub Pages, Netlify, Vercel, S3, nginx...).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure — where to add things
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```text
+src/
+├── app/
+│   ├── layout.tsx        # fonts + metadata
+│   ├── page.tsx          # section order lives here
+│   └── globals.css       # design tokens, hard-shadow utilities, keyframes
+├── data/                 # ✏️ ALL content lives here — edit these, not components
+│   ├── personal.ts       # name, bio, stats, tech stack, competencies, hobbies
+│   ├── experience.ts     # jobs (add a new object to the array → new card)
+│   ├── skills.ts         # skill levels + ranking legend
+│   └── contact.ts        # social links
+├── components/
+│   ├── sections/         # one file per page section, composed in page.tsx
+│   ├── ui/               # reusable primitives: Marquee, Sticker, Tag,
+│   │                     # HardButton, SectionHeading, GhostNumber
+│   └── effects/          # Reveal (scroll-in), Noise (film grain)
+└── lib/types.ts          # shared types
+```
 
-## Learn More
+**Adding content** (a job, a skill, a hobby, a link) = edit the matching file in `src/data/`. Components render whatever is there.
 
-To learn more about Next.js, take a look at the following resources:
+**Adding a section** = create `src/components/sections/my-section.tsx`, export it from `sections/index.ts`, drop it into `page.tsx`. Use `SectionHeading` + `GhostNumber` + `Reveal` to match the look.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design language
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Warm paper (`--paper`), ink black (`--ink`), electric orange (`--accent`), klein blue + yellow stickers. 3px borders, hard offset shadows (`shadow-hard*` utilities), Archivo Black display type, mono labels with wide tracking. Tokens are CSS variables in `globals.css` — change the palette in one place.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Only two client components exist (`Reveal`, `SkillLegend`); everything else is server-rendered at build time.
