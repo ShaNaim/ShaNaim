@@ -1,7 +1,7 @@
-import { Reveal } from "@/components/effects/reveal";
-import { GhostNumber } from "@/components/ui/ghost-number";
-import { Sticker } from "@/components/ui/sticker";
-import { Tag } from "@/components/ui/tag";
+import { Reveal } from "@/components/shared/reveal";
+import { GhostNumber } from "@/components/brutalist/ui/ghost-number";
+import { Sticker } from "@/components/brutalist/ui/sticker";
+import { Tag } from "@/components/brutalist/ui/tag";
 import { personal, heroStats, techStack, coreCompetencies, softSkills } from "@/data";
 
 const STAT_TILT = ["-rotate-1", "rotate-1", "-rotate-1"];

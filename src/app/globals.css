@@ -4,6 +4,7 @@
    DESIGN TOKENS — neo-brutalist print
    ———————————————————————————————— */
 :root {
+  /* print (brutalist) palette */
   --paper: #f2efe6;
   --paper-dim: #e7e2d2;
   --ink: #141311;
@@ -11,6 +12,15 @@
   --accent: #ff4d00;
   --blue: #2400ff;
   --yellow: #ffd500;
+
+  /* atelier palette — built around the gold of the logo */
+  --night: #0d0b09;
+  --night-soft: #15120e;
+  --cream: #ece6da;
+  --cream-dim: #9d9588;
+  --gold: #c4a265;
+  --gold-light: #e9d3a3;
+  --bronze: #7a6034;
 }
 
 @theme inline {
@@ -22,9 +32,18 @@
   --color-blue: var(--blue);
   --color-yellow: var(--yellow);
 
+  --color-night: var(--night);
+  --color-night-soft: var(--night-soft);
+  --color-cream: var(--cream);
+  --color-cream-dim: var(--cream-dim);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-bronze: var(--bronze);
+
   --font-display: var(--font-archivo), "Arial Black", sans-serif;
   --font-sans: var(--font-grotesk), system-ui, sans-serif;
   --font-mono: var(--font-space-mono), "Courier New", monospace;
+  --font-serif: var(--font-fraunces), Georgia, serif;
 }
 
 /* ————————————————————————————————
@@ -71,6 +90,14 @@ html {
 }
 
 body {
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+/* ————————————————————————————————
+   THEME SCOPES — each design owns its canvas
+   ———————————————————————————————— */
+.theme-print {
   background-color: var(--paper);
   background-image: radial-gradient(
     color-mix(in srgb, var(--ink) 9%, transparent) 1px,
@@ -78,13 +105,21 @@ body {
   );
   background-size: 26px 26px;
   color: var(--ink);
-  font-family: var(--font-sans);
-  overflow-x: clip;
 }
 
-::selection {
+.theme-print ::selection {
   background: var(--accent);
   color: var(--paper);
+}
+
+.theme-atelier {
+  background-color: var(--night);
+  color: var(--cream);
+}
+
+.theme-atelier ::selection {
+  background: var(--gold);
+  color: var(--night);
 }
 
 /* ————————————————————————————————
@@ -112,6 +147,24 @@ body {
   }
 }
 
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes drift-a {
+  to {
+    transform: translate(70px, 50px) scale(1.18);
+  }
+}
+
+@keyframes drift-b {
+  to {
+    transform: translate(-60px, -40px) scale(1.12);
+  }
+}
+
 .marquee-track {
   display: flex;
   width: max-content;
@@ -124,6 +177,40 @@ body {
 
 .animate-spin-slow {
   animation: spin-slow 14s linear infinite;
+}
+
+/* Gold gradient text with a slow moving sheen */
+.text-shimmer {
+  background: linear-gradient(
+    110deg,
+    var(--gold) 25%,
+    var(--gold-light) 42%,
+    var(--gold) 58%,
+    var(--bronze) 80%,
+    var(--gold) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 7s linear infinite;
+}
+
+.animate-drift-a {
+  animation: drift-a 24s ease-in-out infinite alternate;
+}
+
+.animate-drift-b {
+  animation: drift-b 30s ease-in-out infinite alternate;
+}
+
+/* Skill meters fill when their Reveal wrapper enters the viewport */
+.grow-bar {
+  width: 0%;
+  transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+.reveal-in .grow-bar {
+  width: var(--bar-w);
 }
 
 .reveal {
@@ -144,12 +231,19 @@ body {
   }
   .marquee-track,
   .animate-blink,
-  .animate-spin-slow {
+  .animate-spin-slow,
+  .text-shimmer,
+  .animate-drift-a,
+  .animate-drift-b {
     animation: none;
   }
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .grow-bar {
+    transition: none;
+    width: var(--bar-w);
   }
 }

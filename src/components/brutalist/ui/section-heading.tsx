@@ -1,4 +1,4 @@
-import { Reveal } from "@/components/effects/reveal";
+import { Reveal } from "@/components/shared/reveal";
 
 interface SectionHeadingProps {
   num: string;

@@ -1,6 +1,6 @@
-import { Reveal } from "@/components/effects/reveal";
-import { GhostNumber } from "@/components/ui/ghost-number";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { Reveal } from "@/components/shared/reveal";
+import { GhostNumber } from "@/components/brutalist/ui/ghost-number";
+import { SectionHeading } from "@/components/brutalist/ui/section-heading";
 import { experiences } from "@/data";
 
 export function Experience() {

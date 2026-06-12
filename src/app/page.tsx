@@ -1,25 +1,27 @@
-import { Noise } from "@/components/effects/noise";
-import { Marquee } from "@/components/ui/marquee";
-import { Nav, Hero, Experience, Skills, Hobbies, Contact, Footer } from "@/components/sections";
+import { Noise } from "@/components/shared/noise";
+import { Spotlight } from "@/components/shared/spotlight";
+import { DesignSwitch } from "@/components/shared/design-switch";
+import { Ticker } from "@/components/atelier/ui/ticker";
+import { Nav, Hero, Craft, Arsenal, Journey, Quests, Contact, Footer } from "@/components/atelier/sections";
 import { techStack } from "@/data";
-
-const MANTRA = ["Minimalism", "Brutalism", "Pixel Precision", "Clean Code", "Fast Loads", "Fewer Bugs", "More Coffee"];
 
 export default function Home() {
   return (
-    <>
+    <div className="theme-atelier min-h-screen">
       <Noise />
+      <Spotlight />
       <Nav />
       <main>
         <Hero />
-        <Marquee items={techStack} rotate={-1} />
-        <Experience />
-        <Skills />
-        <Marquee items={MANTRA} rotate={1} speed={34} />
-        <Hobbies />
+        <Ticker items={techStack} />
+        <Craft />
+        <Arsenal />
+        <Journey />
+        <Quests />
         <Contact />
       </main>
       <Footer />
-    </>
+      <DesignSwitch href="/brutalist/" label="View print edition" on="atelier" />
+    </div>
   );
 }

@@ -33,6 +33,12 @@ export const skills: SkillsMap = {
   ],
 };
 
+/** Professional tier word for a level, e.g. 92 → "Expert". */
+export function getProTier(level: number): string {
+  const range = getRange(level);
+  return skillLegend.find((entry) => entry.range === range)?.pro ?? range;
+}
+
 export const skillLegend: LegendEntry[] = [
   { range: "101+", fun: "Torvalds", pro: "Torvalds" },
   { range: "90+", fun: "Master Yoda", pro: "Expert" },

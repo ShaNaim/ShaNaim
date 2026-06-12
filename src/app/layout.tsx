@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo_Black, Space_Grotesk, Space_Mono } from "next/font/google";
+import { Archivo_Black, Fraunces, Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 
 const display = Archivo_Black({
@@ -19,6 +19,13 @@ const mono = Space_Mono({
   subsets: ["latin"],
 });
 
+const serif = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  axes: ["SOFT", "WONK", "opsz"],
+});
+
 export const metadata: Metadata = {
   title: "Shanaim Shourov — Full-Stack Developer",
   description:
@@ -33,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${grotesk.variable} ${mono.variable} antialiased`}
+      className={`${display.variable} ${grotesk.variable} ${mono.variable} ${serif.variable} antialiased`}
     >
       <body>{children}</body>
     </html>

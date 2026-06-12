@@ -1,3 +1,4 @@
+import { Logo } from "@/components/shared/logo";
 import { personal } from "@/data";
 
 const NAV_LINKS = [
@@ -12,8 +13,8 @@ export function Nav() {
     <header className="fixed inset-x-0 top-0 z-40 border-b-3 border-ink bg-paper">
       <nav className="mx-auto flex max-w-[1320px] items-center justify-between gap-4 px-5 py-3 md:px-10">
         <a href="#home" className="flex items-center gap-2.5 font-display text-xl">
-          <span className="inline-block -rotate-3 border-2 border-ink bg-ink px-2 py-0.5 text-paper transition-transform duration-200 hover:rotate-3">
-            SS
+          <span className="inline-block -rotate-3 border-2 border-ink bg-ink px-2.5 py-1.5 transition-transform duration-200 hover:rotate-3">
+            <Logo height={16} />
           </span>
           <span className="hidden tracking-tight sm:inline">
             SHOUROV<span className="text-accent">.</span>

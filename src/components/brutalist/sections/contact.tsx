@@ -1,6 +1,6 @@
-import { Reveal } from "@/components/effects/reveal";
-import { GhostNumber } from "@/components/ui/ghost-number";
-import { HardButton } from "@/components/ui/hard-button";
+import { Reveal } from "@/components/shared/reveal";
+import { GhostNumber } from "@/components/brutalist/ui/ghost-number";
+import { HardButton } from "@/components/brutalist/ui/hard-button";
 import { socialLinks } from "@/data";
 
 export function Contact() {
