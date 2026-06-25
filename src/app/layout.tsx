@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { Archivo_Black, Fraunces, Orbitron, Space_Grotesk, Space_Mono } from "next/font/google";
+import { Archivo_Black, Bebas_Neue, Fraunces, Orbitron, Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 
 const display = Archivo_Black({
   weight: "400",
   variable: "--font-archivo",
+  subsets: ["latin"],
+});
+
+const bebas = Bebas_Neue({
+  weight: "400",
+  variable: "--font-bebas-loaded",
   subsets: ["latin"],
 });
 
@@ -45,7 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${grotesk.variable} ${mono.variable} ${serif.variable} ${sci.variable} antialiased`}
+      className={`${display.variable} ${grotesk.variable} ${mono.variable} ${serif.variable} ${sci.variable} ${bebas.variable} antialiased`}
     >
       <body>{children}</body>
     </html>

@@ -4,6 +4,7 @@ const EDITIONS = [
   { id: "atelier", href: "/", label: "Atelier", glyph: "◐" },
   { id: "print", href: "/brutalist/", label: "Print", glyph: "◧" },
   { id: "saber", href: "/starwars/", label: "Holonet", glyph: "✦" },
+  { id: "personal", href: "/personal/", label: "Personal", glyph: "◈" },
 ] as const;
 
 export type EditionId = (typeof EDITIONS)[number]["id"];
@@ -24,6 +25,11 @@ const CHROME: Record<EditionId, { base: string; option: string; glyph: string }>
     base: "border border-holo/30 bg-void/85 backdrop-blur-md hover:border-holo/70 hover:shadow-[0_0_18px_-4px_var(--holo)]",
     option: "border border-holo/25 bg-void/90 text-star-dim backdrop-blur-md hover:border-holo/70 hover:text-holo",
     glyph: "text-holo",
+  },
+  personal: {
+    base: "border border-[#ff4d0050] bg-[#080808]/85 backdrop-blur-md hover:border-[#ff4d00]/70 hover:shadow-[0_0_18px_-4px_#ff4d00]",
+    option: "border border-[#ff4d0030] bg-[#080808]/90 text-[#666] backdrop-blur-md hover:border-[#ff4d00]/70 hover:text-[#ff4d00]",
+    glyph: "text-[#ff4d00]",
   },
 };
 
