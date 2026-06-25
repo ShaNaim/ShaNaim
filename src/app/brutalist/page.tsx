@@ -28,7 +28,7 @@ export default function BrutalistPage() {
         <Contact />
       </main>
       <Footer />
-      <DesignSwitch href="/" label="View atelier edition" on="print" />
+      <DesignSwitch on="print" />
     </div>
   );
 }

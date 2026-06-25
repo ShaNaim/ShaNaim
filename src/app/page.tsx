@@ -21,7 +21,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-      <DesignSwitch href="/brutalist/" label="View print edition" on="atelier" />
+      <DesignSwitch on="atelier" />
     </div>
   );
 }

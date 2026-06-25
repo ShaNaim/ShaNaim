@@ -21,6 +21,17 @@
   --gold: #c4a265;
   --gold-light: #e9d3a3;
   --bronze: #7a6034;
+
+  /* saber palette — a galaxy far, far away */
+  --void: #05060c;
+  --hull: #0e1320;
+  --starlight: #e9ecf5;
+  --star-dim: #8d94a8;
+  --sw-yellow: #ffe81f;
+  --saber-blue: #4d7cff;
+  --saber-green: #4adc4a;
+  --saber-red: #ff3a3a;
+  --holo: #6fd6ff;
 }
 
 @theme inline {
@@ -40,10 +51,21 @@
   --color-gold-light: var(--gold-light);
   --color-bronze: var(--bronze);
 
+  --color-void: var(--void);
+  --color-hull: var(--hull);
+  --color-starlight: var(--starlight);
+  --color-star-dim: var(--star-dim);
+  --color-sw-yellow: var(--sw-yellow);
+  --color-saber-blue: var(--saber-blue);
+  --color-saber-green: var(--saber-green);
+  --color-saber-red: var(--saber-red);
+  --color-holo: var(--holo);
+
   --font-display: var(--font-archivo), "Arial Black", sans-serif;
   --font-sans: var(--font-grotesk), system-ui, sans-serif;
   --font-mono: var(--font-space-mono), "Courier New", monospace;
   --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-sci: var(--font-orbitron), "Avenir Next Condensed", sans-serif;
 }
 
 /* ————————————————————————————————
@@ -120,6 +142,127 @@ body {
 .theme-atelier ::selection {
   background: var(--gold);
   color: var(--night);
+}
+
+/* Tiled starfield — four layers at co-prime tile sizes so the repeat never reads */
+.theme-saber {
+  background-color: var(--void);
+  background-image:
+    radial-gradient(1px 1px at 22px 31px, rgba(255, 255, 255, 0.6) 50%, transparent 50%),
+    radial-gradient(1px 1px at 121px 87px, rgba(255, 255, 255, 0.35) 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 64px 142px, rgba(214, 230, 255, 0.5) 50%, transparent 50%),
+    radial-gradient(2px 2px at 191px 53px, rgba(255, 255, 255, 0.7) 50%, transparent 50%);
+  background-size:
+    167px 173px,
+    211px 199px,
+    251px 241px,
+    307px 283px;
+  color: var(--starlight);
+}
+
+.theme-saber ::selection {
+  background: var(--sw-yellow);
+  color: var(--void);
+}
+
+/* Nav links underlined by an igniting saber */
+.saber-link {
+  position: relative;
+}
+.saber-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -5px;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  box-shadow:
+    0 0 5px var(--saber-blue),
+    0 0 14px var(--saber-blue);
+  transition: right 0.25s ease;
+}
+.saber-link:hover::after,
+.saber-link:focus-visible::after {
+  right: 0;
+}
+
+/* The opening-crawl plane */
+.crawl-stage {
+  perspective: 340px;
+}
+.crawl-plane {
+  transform: rotateX(24deg);
+  transform-origin: 50% 100%;
+  animation: crawl-in 2.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 26%);
+}
+@keyframes crawl-in {
+  from {
+    transform: rotateX(24deg) translateY(55%);
+    opacity: 0;
+  }
+  to {
+    transform: rotateX(24deg) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* The main-title recede, like the logo pulling away into space */
+@keyframes title-recede {
+  from {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.title-recede {
+  animation: title-recede 1.9s ease-out both;
+}
+
+/* Hologram transmission jitter */
+@keyframes holo-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  7% {
+    opacity: 0.93;
+  }
+  9% {
+    opacity: 1;
+  }
+  36% {
+    opacity: 0.97;
+  }
+  38% {
+    opacity: 0.86;
+  }
+  40% {
+    opacity: 1;
+  }
+  72% {
+    opacity: 0.94;
+  }
+  74% {
+    opacity: 1;
+  }
+}
+.holo-flicker {
+  animation: holo-flicker 7s linear infinite;
+}
+
+/* Scanlines for holo panels */
+.holo-scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 3px,
+    rgba(111, 214, 255, 0.045) 3px 5px
+  );
 }
 
 /* ————————————————————————————————
@@ -234,7 +377,12 @@ body {
   .animate-spin-slow,
   .text-shimmer,
   .animate-drift-a,
-  .animate-drift-b {
+  .animate-drift-b,
+  .holo-flicker {
+    animation: none;
+  }
+  .crawl-plane,
+  .title-recede {
     animation: none;
   }
   .reveal {
