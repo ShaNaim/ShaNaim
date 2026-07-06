@@ -1,10 +1,13 @@
-import Link from "next/link";
+"use client";
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const EDITIONS = [
-  { id: "atelier", href: "/", label: "Atelier", glyph: "◐" },
+  { id: "atelier", href: "/atelier/", label: "Atelier", glyph: "◐" },
   { id: "print", href: "/brutalist/", label: "Print", glyph: "◧" },
   { id: "saber", href: "/starwars/", label: "Holonet", glyph: "✦" },
-  { id: "personal", href: "/personal/", label: "Personal", glyph: "◈" },
+  { id: "personal", href: "/", label: "Personal", glyph: "◈" },
 ] as const;
 
 export type EditionId = (typeof EDITIONS)[number]["id"];
@@ -33,41 +36,81 @@ const CHROME: Record<EditionId, { base: string; option: string; glyph: string }>
   },
 };
 
+const DICE_FACES = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+
+const HISTORY_KEY = "portfolio:edition-history";
+const HISTORY_CAP = 3;
+
+function isEditionId(value: unknown): value is EditionId {
+  return EDITIONS.some((e) => e.id === value);
+}
+
+function readHistory(): EditionId[] {
+  try {
+    const raw = sessionStorage.getItem(HISTORY_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.filter(isEditionId) : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeHistory(history: EditionId[]): void {
+  try {
+    sessionStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+  } catch {
+    /* sessionStorage unavailable (private mode, quota) — fail silently */
+  }
+}
+
+/** Record a page visit as a "turn": dedupe id, push to end, cap at HISTORY_CAP. */
+function recordVisit(id: EditionId): void {
+  const history = readHistory().filter((h) => h !== id);
+  history.push(id);
+  writeHistory(history.slice(-HISTORY_CAP));
+}
+
 interface DesignSwitchProps {
   /** the edition this indicator is rendered on */
   on: EditionId;
 }
 
 /**
- * Quiet floating edition indicator. Hover (or focus) fans out the other
- * editions; tapping the glyph itself cycles to the next one (touch fallback).
+ * Floating dice button. Rolling it navigates to a random OTHER edition,
+ * excluding whichever editions were visited in the last 3 turns.
  */
 export function DesignSwitch({ on }: DesignSwitchProps) {
   const chrome = CHROME[on];
-  const others = EDITIONS.filter((e) => e.id !== on);
-  const next = others[0];
+  const router = useRouter();
+  const [face] = useState(() => DICE_FACES[Math.floor(Math.random() * DICE_FACES.length)]);
+
+  useEffect(() => {
+    recordVisit(on);
+  }, [on]);
+
+  function handleRoll() {
+    const excluded = new Set<EditionId>(readHistory());
+    excluded.add(on);
+    let candidates = EDITIONS.filter((e) => !excluded.has(e.id));
+    if (candidates.length === 0) {
+      candidates = EDITIONS.filter((e) => e.id !== on);
+    }
+    const choice = candidates[Math.floor(Math.random() * candidates.length)];
+    router.push(choice.href);
+  }
 
   return (
-    <div className="group fixed right-5 bottom-5 z-50 flex flex-col items-end gap-2">
-      {others.map(({ id, href, label, glyph }) => (
-        <Link
-          key={id}
-          href={href}
-          className={`pointer-events-none flex translate-y-2 items-center gap-2.5 px-3.5 py-2 font-mono text-[10px] tracking-[0.2em] uppercase opacity-0 transition-all duration-300 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 ${chrome.option}`}
-        >
-          <span aria-hidden>{glyph}</span>
-          {label} edition
-        </Link>
-      ))}
-
-      <Link
-        href={next.href}
-        aria-label={`Switch design edition (next: ${next.label})`}
-        title="Switch design edition"
+    <div className="fixed right-5 bottom-5 z-50">
+      <button
+        type="button"
+        onClick={handleRoll}
+        aria-label="Roll the dice: jump to a random edition"
+        title="Switch to a random edition"
         className={`grid h-11 w-11 place-items-center text-lg transition-all duration-200 ${chrome.base} ${chrome.glyph}`}
       >
-        ◐
-      </Link>
+        {face}
+      </button>
     </div>
   );
 }

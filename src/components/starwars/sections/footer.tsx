@@ -11,7 +11,7 @@ export function Footer() {
           © {new Date().getFullYear()} {personal.firstName} {personal.lastName} — may the Force be with your codebase
         </span>
         <Link
-          href="/"
+          href="/atelier/"
           className="font-mono text-[10px] tracking-[0.25em] text-star-dim/60 uppercase transition-colors duration-200 hover:text-sw-yellow"
         >
           ✦ return to the atelier

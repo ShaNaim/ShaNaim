@@ -1,27 +1,22 @@
-import { Noise } from "@/components/shared/noise";
-import { Spotlight } from "@/components/shared/spotlight";
 import { DesignSwitch } from "@/components/shared/design-switch";
-import { Ticker } from "@/components/atelier/ui/ticker";
-import { Nav, Hero, Craft, Arsenal, Journey, Quests, Contact, Footer } from "@/components/atelier/sections";
-import { techStack } from "@/data";
+import { Nav, Hero, Experience, Skills, Hobbies, Contact, Footer } from "@/components/personal/sections";
 
-export default function Home() {
+export default function PersonalPage() {
   return (
-    <div className="theme-atelier min-h-screen">
-      <Noise />
-      <Spotlight />
+    <div
+      className="theme-personal min-h-screen font-mono overflow-x-hidden"
+      style={{ backgroundColor: "#080808", color: "#e8e8e8" }}
+    >
       <Nav />
       <main>
         <Hero />
-        <Ticker items={techStack} />
-        <Craft />
-        <Arsenal />
-        <Journey />
-        <Quests />
+        <Experience />
+        <Skills />
+        <Hobbies />
         <Contact />
       </main>
       <Footer />
-      <DesignSwitch on="atelier" />
+      <DesignSwitch on="personal" />
     </div>
   );
 }
