@@ -50,10 +50,7 @@ export function SkillCategory({ category, items, animationIndexOffset = 0, onSki
             onMouseEnter={() => onSkillHover(skill.level)}
             onMouseLeave={() => onSkillHover(null)}
           >
-            <div
-              className="min-w-[120px] text-[12px] tracking-wider transition-colors duration-200 group-hover:text-[#ff4d00]"
-              style={{ color: "#666666" }}
-            >
+            <div className="min-w-[120px] text-[12px] text-[#666666] tracking-wider transition-colors duration-200 group-hover:text-[#ff4d00]">
               {skill.name}
             </div>
 

@@ -102,8 +102,7 @@ export function Hero() {
                   {techStack.map((label) => (
                     <span
                       key={label}
-                      className="text-[10px] px-2.5 py-1 tracking-wider rounded-sm transition-all duration-200 hover:border-[#ff4d00] hover:text-[#ff4d00]"
-                      style={{ border: "1px solid #161616", color: "#666666" }}
+                      className="text-[10px] px-2.5 py-1 border border-[#161616] text-[#666666] tracking-wider rounded-sm transition-all duration-200 hover:border-[#ff4d00] hover:text-[#ff4d00]"
                     >
                       <GlitchText text={label} />
                     </span>
@@ -121,10 +120,9 @@ export function Hero() {
               {coreCompetencies.map((label) => (
                 <div
                   key={label}
-                  className="flex items-center gap-[10px] py-[9px] text-[12px] tracking-wide transition-colors duration-200 hover:text-[#cccccc]"
-                  style={{ borderBottom: "1px solid #161616", color: "#666666" }}
+                  className="flex items-center gap-[10px] py-[9px] border-b border-[#161616] text-[12px] text-[#666666] tracking-wide transition-colors duration-200 hover:text-[#cccccc]"
                 >
-                  <span className="text-[7px]" style={{ color: "#ff4d00" }}>⬡</span>
+                  <span className="text-[7px] text-[#ff4d00]">⬡</span>
                   {label}
                 </div>
               ))}
@@ -136,8 +134,7 @@ export function Hero() {
                 {softSkills.map((label) => (
                   <span
                     key={label}
-                    className="text-[10px] px-2.5 py-0.5 tracking-wider rounded-sm transition-all duration-200 hover:border-[#282828] hover:text-[#cccccc]"
-                    style={{ border: "1px solid #161616", color: "#666666" }}
+                    className="text-[10px] px-2.5 py-0.5 border border-[#161616] text-[#666666] tracking-wider rounded-sm transition-all duration-200 hover:border-[#282828] hover:text-[#cccccc]"
                   >
                     {label}
                   </span>
