@@ -83,10 +83,12 @@ interface DesignSwitchProps {
 export function DesignSwitch({ on }: DesignSwitchProps) {
   const chrome = CHROME[on];
   const router = useRouter();
-  const [face] = useState(() => DICE_FACES[Math.floor(Math.random() * DICE_FACES.length)]);
+  const [face, setFace] = useState(DICE_FACES[0]);
 
   useEffect(() => {
     recordVisit(on);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setFace(DICE_FACES[Math.floor(Math.random() * DICE_FACES.length)]);
   }, [on]);
 
   function handleRoll() {

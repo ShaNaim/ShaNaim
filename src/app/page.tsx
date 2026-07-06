@@ -3,10 +3,7 @@ import { Nav, Hero, Experience, Skills, Hobbies, Contact, Footer } from "@/compo
 
 export default function PersonalPage() {
   return (
-    <div
-      className="theme-personal min-h-screen font-mono overflow-x-hidden"
-      style={{ backgroundColor: "#080808", color: "#e8e8e8" }}
-    >
+    <div className="theme-personal min-h-screen font-mono overflow-x-hidden" style={{ backgroundColor: "#080808", color: "#e8e8e8" }}>
       <Nav />
       <main>
         <Hero />

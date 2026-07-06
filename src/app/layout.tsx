@@ -39,8 +39,7 @@ const sci = Orbitron({
 
 export const metadata: Metadata = {
   title: "Shanaim Shourov — Full-Stack Developer",
-  description:
-    "Full-stack developer building end-to-end web applications — from pixel-precise interfaces to scalable backend integrations. React, TypeScript, Next.js, Node.js.",
+  description: "Full-stack developer building end-to-end web applications — from pixel-precise interfaces to scalable backend integrations. React, TypeScript, Next.js, Node.js.",
 };
 
 export default function RootLayout({
@@ -49,10 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${display.variable} ${grotesk.variable} ${mono.variable} ${serif.variable} ${sci.variable} ${bebas.variable} antialiased`}
-    >
+    <html lang="en" className={`${display.variable} ${grotesk.variable} ${mono.variable} ${serif.variable} ${sci.variable} ${bebas.variable} antialiased`}>
       <body>{children}</body>
     </html>
   );
