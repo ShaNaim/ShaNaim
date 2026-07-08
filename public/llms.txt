@@ -1,0 +1,29 @@
+# Shanaim Shourov
+
+> Full-stack developer with 3+ years of experience building end-to-end web applications — from pixel-precise interfaces to scalable backend integrations.
+
+## About
+
+I build end-to-end web applications — from pixel-precise interfaces to scalable backend integrations. I love minimalism and brutalist design, and I believe the best code is the kind nobody notices.
+
+## Technologies
+
+- Languages: TypeScript, JavaScript
+- Libraries & Frameworks: React, Next.js, Vue.js, Node.js, Express.js
+- Styling & UI: Tailwind CSS, ShadCN/UI
+- Databases & Tools: PostgreSQL, MongoDB, Prisma, Zod
+
+## Experience
+
+- **Software Developer, LocalStaffing** (May 2025 – Present): Building an advertising campaign management dashboard (React, TypeScript, TanStack Query), an AI-powered content generation feature using the Anthropic API, a job recruitment platform, and a commission calculation/payment management module.
+- **Software Engineer, Jukto Digital** (August 2023 – February 2026): Built and maintained a Learning Management System and Student Management System in React, designed reusable component libraries, and optimized application performance and accessibility.
+
+## Core Competencies
+
+Full-stack web development, responsive UI/UX design, RESTful API development and integration, database design and optimization, performance optimization, effective collaboration and communication.
+
+## Contact
+
+- Email: shanaim2k15@gmail.com
+- LinkedIn: https://www.linkedin.com/in/shanaim/
+- GitHub: https://github.com/ShaNaim/

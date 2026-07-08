@@ -6,9 +6,23 @@ import { Nav, Hero, Experience, Skills, Hobbies, Contact, Footer } from "@/compo
 import { techStack } from "@/data";
 
 export const metadata: Metadata = {
-  title: "Shanaim Shourov — Print Edition",
+  title: "Print Edition",
   description:
-    "The loud, neo-brutalist cut of the portfolio. Same developer, same facts, more ink. Full-stack web development with React, TypeScript, Next.js, Node.js.",
+    "Shanaim Shourov, full-stack developer with 3+ years shipping production web applications using React, TypeScript, Next.js, Node.js, and PostgreSQL. Includes full work experience, technical skills, and contact information.",
+  alternates: { canonical: "/brutalist/" },
+  openGraph: {
+    title: "Shanaim Shourov — Full-Stack Developer",
+    description: "Full-stack developer with 3+ years shipping production web applications using React, TypeScript, Next.js, Node.js, and PostgreSQL.",
+    url: "/brutalist/",
+    siteName: "Shanaim Shourov — Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shanaim Shourov — Full-Stack Developer",
+    description: "Full-stack developer with 3+ years shipping production web applications using React, TypeScript, Next.js, Node.js, and PostgreSQL.",
+  },
 };
 
 const MANTRA = ["Minimalism", "Brutalism", "Pixel Precision", "Clean Code", "Fast Loads", "Fewer Bugs", "More Coffee"];

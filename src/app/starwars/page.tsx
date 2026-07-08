@@ -7,9 +7,23 @@ import { Nav, Hero, Force, Training, Service, Cantina, Transmission, Footer } fr
 import { techStack } from "@/data";
 
 export const metadata: Metadata = {
-  title: "Shanaim Shourov — Holonet Edition",
+  title: "Holonet Edition",
   description:
-    "The Star Wars cut of the portfolio. A full-stack developer from a galaxy far, far away — React, TypeScript, Next.js, Node.js, and a well-trained lightsaber.",
+    "Shanaim Shourov is a full-stack developer with 3+ years of experience in React, TypeScript, Next.js, Node.js, and PostgreSQL. Explore his professional experience, technical skills, and ways to get in touch.",
+  alternates: { canonical: "/starwars/" },
+  openGraph: {
+    title: "Shanaim Shourov — Full-Stack Developer",
+    description: "Full-stack developer with 3+ years of experience in React, TypeScript, Next.js, Node.js, and PostgreSQL.",
+    url: "/starwars/",
+    siteName: "Shanaim Shourov — Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shanaim Shourov — Full-Stack Developer",
+    description: "Full-stack developer with 3+ years of experience in React, TypeScript, Next.js, Node.js, and PostgreSQL.",
+  },
 };
 
 export default function StarWarsPage() {

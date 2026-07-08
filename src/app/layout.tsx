@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo_Black, Bebas_Neue, Fraunces, Orbitron, Space_Grotesk, Space_Mono } from "next/font/google";
+import { SITE_URL } from "@/lib/site";
+import { getPersonSchema } from "@/lib/person-schema";
 import "./globals.css";
 
 const display = Archivo_Black({
@@ -38,8 +40,27 @@ const sci = Orbitron({
 });
 
 export const metadata: Metadata = {
-  title: "Shanaim Shourov — Full-Stack Developer",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Shanaim Shourov — Full-Stack Developer",
+    template: "%s — Shanaim Shourov",
+  },
   description: "Full-stack developer building end-to-end web applications — from pixel-precise interfaces to scalable backend integrations. React, TypeScript, Next.js, Node.js.",
+  authors: [{ name: "Shanaim Shourov", url: SITE_URL }],
+  creator: "Shanaim Shourov",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  openGraph: {
+    siteName: "Shanaim Shourov — Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
@@ -49,7 +70,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${display.variable} ${grotesk.variable} ${mono.variable} ${serif.variable} ${sci.variable} ${bebas.variable} antialiased`}>
-      <body>{children}</body>
+      <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getPersonSchema()) }} />
+        {children}
+      </body>
     </html>
   );
 }
