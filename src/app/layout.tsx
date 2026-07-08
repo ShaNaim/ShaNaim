@@ -41,10 +41,9 @@ const sci = Orbitron({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: {
-    default: "Shanaim Shourov — Full-Stack Developer",
-    template: "%s — Shanaim Shourov",
-  },
+  // Kept identical across every edition on purpose — the tab title should
+  // always read as the person, not which visual theme happens to be active.
+  title: "Shanaim Shourov",
   description: "Full-stack developer building end-to-end web applications — from pixel-precise interfaces to scalable backend integrations. React, TypeScript, Next.js, Node.js.",
   authors: [{ name: "Shanaim Shourov", url: SITE_URL }],
   creator: "Shanaim Shourov",

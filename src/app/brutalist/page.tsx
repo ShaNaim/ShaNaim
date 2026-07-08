@@ -6,7 +6,7 @@ import { Nav, Hero, Experience, Skills, Hobbies, Contact, Footer } from "@/compo
 import { techStack } from "@/data";
 
 export const metadata: Metadata = {
-  title: "Print Edition",
+  // No title override here — inherits "Shanaim Shourov" from the root layout.
   description:
     "Shanaim Shourov, full-stack developer with 3+ years shipping production web applications using React, TypeScript, Next.js, Node.js, and PostgreSQL. Includes full work experience, technical skills, and contact information.",
   alternates: { canonical: "/brutalist/" },

@@ -7,7 +7,7 @@ import { Nav, Hero, Force, Training, Service, Cantina, Transmission, Footer } fr
 import { techStack } from "@/data";
 
 export const metadata: Metadata = {
-  title: "Holonet Edition",
+  // No title override here — inherits "Shanaim Shourov" from the root layout.
   description:
     "Shanaim Shourov is a full-stack developer with 3+ years of experience in React, TypeScript, Next.js, Node.js, and PostgreSQL. Explore his professional experience, technical skills, and ways to get in touch.",
   alternates: { canonical: "/starwars/" },

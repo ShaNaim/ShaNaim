@@ -3,10 +3,7 @@ import { DesignSwitch } from "@/components/shared/design-switch";
 import { Nav, Hero, Experience, Skills, Hobbies, Contact, Footer } from "@/components/personal/sections";
 
 export const metadata: Metadata = {
-  // The root layout's title template doesn't apply at this same route segment
-  // (it only reaches nested segments like /atelier, /brutalist, /starwars),
-  // so the full title is spelled out explicitly here.
-  title: "Personal Edition — Shanaim Shourov",
+  // No title override here — inherits "Shanaim Shourov" from the root layout.
   description:
     "Shanaim Shourov — full-stack developer with 3+ years of experience building end-to-end web applications with React, Next.js, Node.js, and PostgreSQL. See his work experience, technical skills, and how to get in touch.",
   alternates: { canonical: "/" },

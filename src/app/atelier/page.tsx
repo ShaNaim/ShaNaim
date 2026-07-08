@@ -7,7 +7,7 @@ import { Nav, Hero, Craft, Arsenal, Journey, Quests, Contact, Footer } from "@/c
 import { techStack } from "@/data";
 
 export const metadata: Metadata = {
-  title: "Atelier Edition",
+  // No title override here — inherits "Shanaim Shourov" from the root layout.
   description:
     "Shanaim Shourov is a full-stack developer with 3+ years of experience building end-to-end web applications — from database design to polished interfaces — using React, TypeScript, Next.js, and Node.js. View his work experience, core skills, and contact details.",
   alternates: { canonical: "/atelier/" },
