@@ -1,6 +1,6 @@
 /**
- * Production domain. Update this to the real deployed domain before going live —
- * every canonical URL, OG/Twitter image URL, and sitemap entry is derived from it.
+ * Production domain. Every canonical URL, OG/Twitter image URL, and sitemap
+ * entry is derived from this.
  */
 export const SITE_URL = "https://shanaimshourov.com";
 
